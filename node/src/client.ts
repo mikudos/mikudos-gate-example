@@ -1,3 +1,4 @@
+import _ from 'lodash';
 const socket = require('socket.io-client')('http://localhost:3000', {});
 socket.on('connect', function() {
     console.log('connected');
@@ -20,6 +21,7 @@ socket.on('disconnect', function() {
 });
 socket.on('authentication', (data: any) => {
     console.log('TCL: data', data);
+    const token = _.get(data, 'accessToken');
 });
 setTimeout(() => {
     socket.emit('event', { test: 'tset' });

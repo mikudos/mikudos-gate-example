@@ -23,11 +23,25 @@ io.on('connection', client => {
         console.log('TCL: data', data);
     });
     client.on('authentication', async (data: AuthenticationRequest) => {
-        client.emit(
-            'authentication',
-            await new Authentication().authenticate(data)
-        );
-        client.handshake.headers.authentication = 'test token';
+        const Auth = new Authentication({
+            port: 3030
+        });
+        let token: string = '';
+        try {
+            const authResult = await Auth.authenticate(data);
+            client.emit('authentication', authResult);
+            token = _.get(authResult, Auth.tokenPath);
+        } catch (error) {
+            client.emit('authentication', {
+                code: 501,
+                message: 'Authentication Request Error!',
+                error: {
+                    info: 'Authentication Request Error!'
+                }
+            });
+        }
+        if (!token) return;
+        client.handshake.headers.authentication = token;
         client.join('authenticated', () => {
             let rooms = Object.keys(client.rooms);
             console.log(rooms); // [ <socket.id>, 'room 237' ]

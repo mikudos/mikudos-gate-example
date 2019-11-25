@@ -15,13 +15,24 @@ export class Authentication {
         },
         json: true
     };
-    constructor({ protocol, host, port, method }: any = {}) {
-        this.requsetOption.uri = ``
+    constructor(
+        {
+            protocol = 'http',
+            host = '127.0.0.1',
+            port = '80',
+            path = '/authentication',
+            method,
+            headers = {}
+        }: any = {},
+        public tokenPath: string = 'accessToken'
+    ) {
+        this.requsetOption.uri = `${protocol}://${host}:${port}${path}`;
+        this.requsetOption.method = method || this.requsetOption.method;
+        _.assign(this.requsetOption.headers, headers);
     }
 
     async authenticate(body: AuthenticationRequest) {
         let option = { body, ...this.requsetOption };
-        console.log('TCL: Authentication -> authenticate -> option', option);
         return await rp({ body, ...this.requsetOption });
     }
 }
