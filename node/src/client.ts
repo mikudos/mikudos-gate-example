@@ -1,34 +1,48 @@
 import _ from 'lodash';
-const socket = require('socket.io-client')('http://localhost:3000', {});
-socket.on('connect', function() {
-    console.log('connected');
-    // auto reauthentication
-    // socket.emit('authentication', {
-    //     strategy: 'jwt',
-    //     accessToken: 'test token'
-    // });
-});
-socket.on('message', (data: any) => {
-    // response message
-    console.log('TCL: data', data);
-    console.log('TCL: socket', socket);
-});
-socket.on('event', function(data: any) {
-    console.log('TCL: data', data);
-});
-socket.on('disconnect', function() {
-    console.log('TCL: disconnect');
-});
-socket.on('authentication', (data: any) => {
-    console.log('TCL: data', data);
-    const token = _.get(data, 'accessToken');
+import { MikudosSocketIoClient } from 'mikudos-socketio-client';
+
+const client = new MikudosSocketIoClient({
+    uri: 'ws://localhost:3030'
 });
 setTimeout(() => {
-    socket.emit('event', { test: 'tset' });
-    socket.send({ test: 'test' });
-    socket.emit('authentication', {
-        strategy: 'local',
-        email: '18534572861',
-        password: 'qiushanyu666'
-    });
+    client
+        .authentication({
+            strategy: 'local',
+            email: '18534572861',
+            password: 'qiushanyu666'
+        })
+        .then(res => {
+            console.log('TCL: res', res);
+        })
+        .catch(err => {
+            console.log('TCL: err', err);
+        });
 }, 3000);
+setInterval(() => {
+    client
+        .rpcCall({
+            method: 'rpc_1.add',
+            params: [1, 6],
+            id: 4
+        })
+        .then(res => {
+            console.log('TCL: res', res);
+        })
+        .catch(err => {
+            console.log('TCL: err', err);
+        });
+}, 3000);
+setTimeout(() => {
+    client
+        .rpcCall({
+            method: 'rpc_1.getUser',
+            params: [],
+            id: 4
+        })
+        .then(res => {
+            console.log('TCL: res', res);
+        })
+        .catch(err => {
+            console.log('TCL: err', err);
+        });
+}, 1000);
