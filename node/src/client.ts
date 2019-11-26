@@ -2,7 +2,7 @@ import _ from 'lodash';
 import { MikudosSocketIoClient } from 'mikudos-socketio-client';
 
 const client = new MikudosSocketIoClient({
-    uri: 'ws://localhost:3030'
+    uri: 'ws://localhost:3000'
 });
 setTimeout(() => {
     client
@@ -21,6 +21,7 @@ setTimeout(() => {
 setInterval(() => {
     client
         .rpcCall({
+            jsonrpc: '2.0',
             method: 'rpc_1.add',
             params: [1, 6],
             id: 4
@@ -35,6 +36,7 @@ setInterval(() => {
 setTimeout(() => {
     client
         .rpcCall({
+            jsonrpc: '2.0',
             method: 'rpc_1.getUser',
             params: [],
             id: 4

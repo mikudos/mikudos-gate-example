@@ -1,5 +1,6 @@
 import rp from 'request-promise-native';
 import _ from 'lodash';
+import { Application } from './app';
 
 export class AuthenticationRequest {
     strategy?: string;
@@ -35,4 +36,10 @@ export class Authentication {
         let option = { body, ...this.requsetOption };
         return await rp({ body, ...this.requsetOption });
     }
+}
+
+export default function(app: Application) {
+    app.authentication = new Authentication({
+        port: 3030
+    });
 }

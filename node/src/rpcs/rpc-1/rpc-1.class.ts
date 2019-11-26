@@ -1,6 +1,5 @@
 export default class {
     async add(request: any, a: number, b: number) {
-        console.log('TCL: add -> a, b', a, b);
         return a + b;
     }
 
