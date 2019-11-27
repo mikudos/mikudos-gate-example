@@ -19,7 +19,7 @@ export default {
                 ) {
                     throw new Error('Authorization Error!');
                 }
-                request.user = request.request.user;
+                request.user = request.socket.mikudos.user;
                 request.authenticated = true;
             }
         ]
