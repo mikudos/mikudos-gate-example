@@ -15,7 +15,7 @@ setTimeout(() => {
             password: 'qiushanyu666'
         })
         .then(res => {
-            console.log('TCL: res', res);
+            // console.log('TCL: res', res);
         })
         .catch(err => {
             console.log('TCL: err', err);
@@ -36,14 +36,10 @@ setInterval(() => {
             console.log('TCL: err', err);
         });
 }, 3000);
-setTimeout(() => {
+
+setInterval(() => {
     client
-        .rpcCall({
-            jsonrpc: '2.0',
-            method: 'rpc_1.getUser',
-            params: [],
-            id: 4
-        })
+        .sendChat()
         .then(res => {
             console.log('TCL: res', res);
         })
@@ -51,3 +47,10 @@ setTimeout(() => {
             console.log('TCL: err', err);
         });
 }, 1000);
+setTimeout(() => {
+    client.joinChat();
+}, 5000);
+
+setTimeout(() => {
+    client.leaveChat();
+}, 15000);

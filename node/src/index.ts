@@ -1,15 +1,16 @@
 import http from 'http';
 import socket from 'socket.io';
-import { Application } from './app';
+import { Application } from 'mikudos-socketio-app';
 import rpcs from './rpcs';
-import auth from './app/authentication.class';
+import auth from 'mikudos-socketio-app/src/authentication.class';
+import authentication from './authentication';
 import message from './message';
 
 const server = http.createServer();
 const io = socket(server);
 
 const app = new Application(io);
-app.configure(auth);
+app.configure(authentication);
 app.configure(rpcs);
 app.configure(message);
 
