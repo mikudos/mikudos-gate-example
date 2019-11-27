@@ -1,9 +1,12 @@
 import _ from 'lodash';
 import { MikudosSocketIoClient } from 'mikudos-socketio-client';
 
-const client = new MikudosSocketIoClient({
-    uri: 'ws://localhost:3000'
-});
+const client = new MikudosSocketIoClient(
+    {
+        uri: 'ws://localhost:3000'
+    },
+    { rpcEventName: 'rpc-call' }
+);
 setTimeout(() => {
     client
         .authentication({
