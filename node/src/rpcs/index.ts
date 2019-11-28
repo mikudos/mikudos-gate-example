@@ -1,5 +1,4 @@
 import { Application, JSON_RPC_HANDLER } from 'mikudos-socketio-app';
-const JsonRpcError = require('json-rpc-error');
 import rpc_1 from './rpc-1';
 
 export default function(app: Application) {
