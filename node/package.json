@@ -50,7 +50,7 @@
         "@types/socket.io": "^2.1.4",
         "@types/socket.io-client": "^1.4.32",
         "axios": "^0.19.0",
-        "mikudos-socketio-client": "0.0.4",
+        "mikudos-socketio-client": "0.0.5",
         "mocha": "^6.2.0",
         "nodemon": "^1.19.1",
         "shx": "^0.3.2",
