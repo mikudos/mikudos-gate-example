@@ -1,7 +1,7 @@
 {
-    "name": "mikudos_rbac-service",
+    "name": "mikudos_message-service",
     "version": "0.0.1",
-    "description": "mikudos_rbac-grpc-service",
+    "description": "mikudos_message-socketIO-service",
     "homepage": "",
     "main": "src",
     "keywords": [
@@ -31,12 +31,13 @@
         "compile": "shx rm -rf lib/ && tsc"
     },
     "dependencies": {
+        "grpc": "^1.24.2",
         "grpc-caller": "^0.13.0",
         "highland": "^2.13.5",
         "json-rpc-error": "^2.0.0",
         "kafkajs": "^1.10.0",
         "lodash": "^4.17.15",
-        "mikudos-socketio-app": "0.0.1",
+        "mikudos-socketio-app": "0.0.6",
         "request": "^2.88.0",
         "request-promise-native": "^1.0.8",
         "socket.io": "^2.3.0"
