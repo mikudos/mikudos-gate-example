@@ -37,7 +37,7 @@
         "json-rpc-error": "^2.0.0",
         "kafkajs": "^1.10.0",
         "lodash": "^4.17.15",
-        "mikudos-socketio-app": "0.0.7",
+        "mikudos-socketio-app": "0.0.9",
         "request": "^2.88.0",
         "request-promise-native": "^1.0.8",
         "socket.io": "^2.3.0"
