@@ -37,10 +37,7 @@
         "json-rpc-error": "^2.0.0",
         "kafkajs": "^1.10.0",
         "lodash": "^4.17.15",
-        "mikudos-socketio-app": "0.0.10",
-        "request": "^2.88.0",
-        "request-promise-native": "^1.0.8",
-        "socket.io": "^2.3.0"
+        "mikudos-socketio-app": "0.0.10"
     },
     "devDependencies": {
         "@types/config": "0.0.35",
@@ -55,7 +52,6 @@
         "mocha": "^6.2.0",
         "nodemon": "^1.19.1",
         "shx": "^0.3.2",
-        "socket.io-client": "^2.3.0",
         "ts-mocha": "^6.0.0",
         "ts-node-dev": "^1.0.0-pre.42",
         "tslint": "^5.18.0",
