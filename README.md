@@ -1,4 +1,4 @@
-![Mikudos Service](https://img.shields.io/badge/MIKUDOS-GRPC--server-lightgrey?style=for-the-badge&logo=appveyor)
+![Mikudos Gate](https://img.shields.io/badge/MIKUDOS-Gate-blue?style=for-the-badge&logo=appveyor)
 
 # mikudos-messages
 
