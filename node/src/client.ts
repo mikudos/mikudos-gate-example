@@ -37,19 +37,19 @@ const client = new MikudosSocketIoClient(
 //         });
 // }, 3000);
 
-// setInterval(() => {
-//     client
-//         .sendChat()
-//         .then(res => {
-//             console.log('TCL: res', res);
-//         })
-//         .catch(err => {
-//             console.log('TCL: err', err);
-//         });
-// }, 1000);
-// setTimeout(() => {
-//     client.joinChat();
-// }, 5000);
+setInterval(() => {
+    client
+        .sendChat()
+        .then(res => {
+            console.log('TCL: res', res);
+        })
+        .catch(err => {
+            console.log('TCL: err', err);
+        });
+}, 1000);
+setTimeout(() => {
+    client.joinChat();
+}, 5000);
 
 // setTimeout(() => {
 //     client.leaveChat();
