@@ -8,10 +8,14 @@ async function authJoinCallback(socket: SocketIO.Socket, app?: Application) {
         ];
         app.io.in(userId).clients((err: any, clients: string[]) => {
             let doubleLoginClients = pull(clients, socket.id);
+            let close = true;
             clients.map(id => {
-                (app.io.sockets.sockets as { [key: string]: SocketIO.Socket })[
+                (app.io.sockets as { [key: string]: SocketIO.Socket })[
                     id
-                ].disconnect(true);
+                ].disconnect(close);
+                if (app.enabled('redisAdaptered')) {
+                    app.remoteDisconnect(id, close);
+                }
             });
         });
     }

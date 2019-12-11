@@ -38,7 +38,7 @@
         "json-rpc-error": "^2.0.0",
         "kafkajs": "^1.10.0",
         "lodash": "^4.17.15",
-        "mikudos-socketio-app": "0.0.15"
+        "mikudos-socketio-app": "0.0.17"
     },
     "devDependencies": {
         "@types/config": "0.0.35",
