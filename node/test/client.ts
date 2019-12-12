@@ -7,6 +7,9 @@ const client = new MikudosSocketIoClient(
     },
     { rpcEventName: 'rpc-call' }
 );
+client.chatEventEmitter.on('chat', data => {
+    console.log('chat data:', data);
+});
 setTimeout(() => {
     client
         .authentication({

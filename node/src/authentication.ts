@@ -10,9 +10,7 @@ async function authJoinCallback(socket: mikudos.Socket, app?: Application) {
             let doubleLoginClients = pull(clients, socket.id);
             let close = true;
             clients.map(id => {
-                (app.io.sockets as { [key: string]: SocketIO.Socket })[
-                    id
-                ].disconnect(close);
+                if (app.io.sockets[id]) app.io.sockets[id].disconnect(close);
                 if (app.enabled('redisAdaptered')) {
                     app.remoteDisconnect(id, close);
                 }
