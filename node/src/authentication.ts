@@ -1,7 +1,7 @@
-import { Application, Authentication } from 'mikudos-socketio-app';
+import { Application, Authentication, mikudos } from 'mikudos-socketio-app';
 import { pull } from 'lodash';
 
-async function authJoinCallback(socket: SocketIO.Socket, app?: Application) {
+async function authJoinCallback(socket: mikudos.Socket, app?: Application) {
     if (app) {
         let userId = (socket as any).mikudos.user[
             app.get('authentication.entityId') || 'id'
