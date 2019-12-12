@@ -6,9 +6,7 @@ export default {
     all: [(data: any, socket: mikudos.Socket) => {}],
     chat: [
         async (data: any, socket: mikudos.Socket) => {
-            console.log('TCL: socket chat');
             let rooms = await socket.mikudos.app.clientRooms(socket);
-            console.log('rooms', rooms);
         }
     ],
     join: [(data: any, socket: mikudos.Socket) => {}],
