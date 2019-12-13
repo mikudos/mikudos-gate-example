@@ -1,7 +1,7 @@
-import { Application, Authentication } from 'mikudos-socketio-app';
+import { Application, Authentication, mikudos } from 'mikudos-socketio-app';
 import { pull } from 'lodash';
 
-async function authJoinCallback(socket: SocketIO.Socket, app?: Application) {
+async function authJoinCallback(socket: mikudos.Socket, app?: Application) {
     if (app) {
         let userId = (socket as any).mikudos.user[
             app.get('authentication.entityId') || 'id'
@@ -10,9 +10,7 @@ async function authJoinCallback(socket: SocketIO.Socket, app?: Application) {
             let doubleLoginClients = pull(clients, socket.id);
             let close = true;
             clients.map(id => {
-                (app.io.sockets as { [key: string]: SocketIO.Socket })[
-                    id
-                ].disconnect(close);
+                if (app.io.sockets[id]) app.io.sockets[id].disconnect(close);
                 if (app.enabled('redisAdaptered')) {
                     app.remoteDisconnect(id, close);
                 }

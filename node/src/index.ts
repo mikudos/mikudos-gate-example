@@ -11,7 +11,9 @@ import inter_service_clients from './inter_service_clients';
 const server = http.createServer();
 const io = socket(server);
 
-const app = new Application(io);
+const app = new Application(io, {
+    redisConfig: { host: 'localhost', port: 6379 }
+});
 app.configure(inter_service_clients);
 app.configure(authentication);
 app.configure(rpcs);

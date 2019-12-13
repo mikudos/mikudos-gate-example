@@ -38,7 +38,7 @@
         "json-rpc-error": "^2.0.0",
         "kafkajs": "^1.10.0",
         "lodash": "^4.17.15",
-        "mikudos-socketio-app": "0.0.17"
+        "mikudos-socketio-app": "0.0.27"
     },
     "devDependencies": {
         "@types/config": "0.0.35",
@@ -53,6 +53,7 @@
         "mocha": "^6.2.0",
         "nodemon": "^1.19.1",
         "shx": "^0.3.2",
+        "socket-stress-test": "^0.1.0",
         "ts-mocha": "^6.0.0",
         "ts-node-dev": "^1.0.0-pre.42",
         "tslint": "^5.18.0",

@@ -5,7 +5,7 @@ import path from 'path';
 // export default client;
 export default function(app: Application) {
     let interClients = app.get('interClients');
-    let serviceClients = app.get('interServiceClients').users;
+    let serviceClients = { name: '127.0.0.1', port: '50051' };
     const file = path.resolve(__dirname, '../../proto/users/users.proto');
     const load = {
         keepCase: true,
