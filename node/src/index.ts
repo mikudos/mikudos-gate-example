@@ -9,7 +9,9 @@ import duplexs from './duplexs';
 import inter_service_clients from './inter_service_clients';
 
 const server = http.createServer();
-const io = socket(server);
+const io = socket(server, {
+    transports: ['websocket']
+});
 
 const app = new Application(io, {
     redisConfig: { host: 'localhost', port: 6379 }
