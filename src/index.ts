@@ -10,11 +10,11 @@ import inter_service_clients from './inter_service_clients';
 
 const server = http.createServer();
 const io = socket(server, {
-  transports: ['websocket'],
+    transports: ['websocket']
 });
 
 const app = new Application(io, {
-  redisConfig: { host: 'localhost', port: 6379 },
+    redisConfig: { host: 'localhost', port: 6379 }
 });
 app.configure(inter_service_clients);
 app.configure(authentication);
