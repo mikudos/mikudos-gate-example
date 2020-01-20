@@ -4,6 +4,7 @@ import { MikudosSocketIoClient } from 'mikudos-socketio-client';
 const client = new MikudosSocketIoClient(
   {
     uri: 'ws://localhost:3000',
+    option: { path: '/root' },
   },
   { rpcEventName: 'rpc-call' },
 );

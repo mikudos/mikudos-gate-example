@@ -37,7 +37,8 @@
     "highland": "^2.13.5",
     "json-rpc-error": "^2.0.0",
     "kafkajs": "^1.10.0",
-    "lodash": "^4.17.15"
+    "lodash": "^4.17.15",
+    "mikudos-socketio-app": "^0.1.1"
   },
   "devDependencies": {
     "@types/config": "0.0.35",
