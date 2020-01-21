@@ -1,4 +1,8 @@
 port: 3000
+redisAdaptered: true
+redisConfig:
+  host: "localhost"
+  port: 6379
 authentication:
   entityId: "_id"
   request:
@@ -15,3 +19,7 @@ chat:
 eventPath:
   json_rpc_services: "rpc-call"
   duplex_services: "stream-call"
+pusher:
+  address: "127.0.0.1"
+  port: 50051
+  service: "Message_pusher"

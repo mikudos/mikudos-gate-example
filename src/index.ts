@@ -4,6 +4,7 @@ import { Application } from 'mikudos-socketio-app';
 import rpcs from './rpcs';
 import publish from './publish';
 import authentication from './authentication';
+import pusher from './pusher';
 import message from './message';
 import duplexs from './duplexs';
 import inter_service_clients from './inter_service_clients';
@@ -13,11 +14,10 @@ const io = socket(server, {
   transports: ['websocket'],
 });
 
-const app = new Application(io, {
-  redisConfig: { host: 'localhost', port: 6379 },
-});
+const app = new Application(io);
 app.configure(inter_service_clients);
 app.configure(authentication);
+app.configure(pusher);
 app.configure(rpcs);
 app.configure(publish);
 app.configure(message);

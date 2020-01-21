@@ -1,4 +1,9 @@
-import { Application, Authentication, mikudos } from 'mikudos-socketio-app';
+import {
+  Application,
+  Authentication,
+  AuthenticationRequest,
+  mikudos,
+} from 'mikudos-socketio-app';
 import { pull } from 'lodash';
 
 async function authJoinCallback(socket: mikudos.Socket, app?: Application) {
@@ -7,7 +12,7 @@ async function authJoinCallback(socket: mikudos.Socket, app?: Application) {
       app.get('authentication.entityId') || 'id'
     ];
     app.io.in(userId).clients((err: any, clients: string[]) => {
-      let doubleLoginClients = pull(clients, socket.id);
+      pull(clients, socket.id);
       let close = true;
       clients.map(id => {
         if (app.io.sockets[id]) app.io.sockets[id].disconnect(close);
@@ -19,8 +24,21 @@ async function authJoinCallback(socket: mikudos.Socket, app?: Application) {
   }
 }
 
+class MyAuthentication extends Authentication {
+  async authenticate(body: AuthenticationRequest) {
+    let option = { body, ...this.requsetOption };
+    return {
+      accessToken: 'test token',
+      user: {
+        id: 21,
+        username: 'testuser',
+      },
+    };
+  }
+}
+
 export default function(app: Application) {
-  app.authentication = new Authentication(
+  app.authentication = new MyAuthentication(
     app,
     {
       ...app.get('authentication.request'),
