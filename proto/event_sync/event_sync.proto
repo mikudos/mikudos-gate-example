@@ -1,0 +1,41 @@
+syntax = "proto3";
+// import "proto/include/google/protobuf/any.proto";
+package event_sync;
+
+service EventSyncService {
+  // your model Requests
+  rpc FindSceneInstanceList(FindRequest) returns (FindEventSyncResult) {}
+  rpc EventSyncSceneInstance(stream ClientEventSyncMessage)
+      returns (stream ServerEventSyncMessage) {}
+}
+
+message FindRequest { InstanceState state = 1; }
+
+enum InstanceState {
+  WAITING = 0;
+  READY = 1;
+  BEGIN = 2;
+  DELAY = 3;
+  FINISH = 4;
+}
+
+message ClientEventSyncMessage {
+  string instanceId = 1;
+  EventType eventType = 2;
+}
+
+message ServerEventSyncMessage {
+  string instanceId = 1;
+  EventType eventType = 2;
+  InstanceState state = 3;
+}
+
+enum EventType { // event type
+  JOIN = 0;
+  LEAVE = 1;
+  NORMAL = 2;
+}
+
+message FindEventSyncResult {
+  repeated string instanceIdArr = 1;
+}

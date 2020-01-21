@@ -23,3 +23,7 @@ pusher:
   address: "127.0.0.1"
   port: 50051
   service: "Message_pusher"
+event_sync:
+  address: "127.0.0.1"
+  port: 50052
+  service: "EventSyncService"
