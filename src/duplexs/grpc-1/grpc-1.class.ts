@@ -1,6 +1,6 @@
 import { EventEmitter } from 'events';
 import path from 'path';
-import { Application } from 'mikudos-socketio-app';
+import { Application, mikudos, DUPLEX_HANDLER } from 'mikudos-socketio-app';
 const grpc_caller = require('grpc-caller');
 
 /**
@@ -29,7 +29,7 @@ function initEventSyncer(app: Application) {
 export default class DuplexHandleClass {
   private syncService: any;
   private testCall: any;
-  constructor(app: Application) {
+  constructor(private handler: DUPLEX_HANDLER, private app: Application) {
     this.syncService = initEventSyncer(app);
     this.testCall = this.syncService.EventSyncSceneInstance({
       // metadata
@@ -38,8 +38,9 @@ export default class DuplexHandleClass {
     this.testCall.on('data', (data: any) => {
       let socketId = data.socketId;
       //    find the correspond socket eventemitter and emit event
-      //   this
-      //   socketEvent.emit(eventName, data);
+      const socket = this.handler.socketStreams[socketId];
+      const eventName = data.eventName;
+      socket.emit(eventName, data);
     });
   }
   async EventSyncSceneInstance(
