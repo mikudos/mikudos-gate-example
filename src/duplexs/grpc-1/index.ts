@@ -6,7 +6,7 @@ import { EventEmitter } from 'events';
 export default class Service implements mikudos.DuplexService {
   public serviceKey: string = 'grpc1';
   public serviceClass: any = Grpc1;
-  public before: mikudos.duplexHooks = {};
+  public before: mikudos.duplexHooks = hooks;
   public service: { [key: string]: Function } = {};
   constructor(private handler: DUPLEX_HANDLER, private app: Application) {
     this.service = new this.serviceClass(this.handler, app);
