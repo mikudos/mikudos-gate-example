@@ -39,7 +39,7 @@ export default class DuplexHandleClass {
       let socketId = data.socketId;
       //    find the correspond socket eventemitter and emit event
       const socket = this.handler.socketStreams[socketId];
-      const eventName = data.eventName;
+      const eventName = `grpc1.EventSyncSceneInstance`;
       socket.emit(eventName, data);
     });
   }
