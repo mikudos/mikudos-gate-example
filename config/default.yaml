@@ -54,3 +54,10 @@ event_sync:
   address: "127.0.0.1"
   port: 50052
   service: "EventSyncService"
+####################
+# internal grpc serivce config
+####################
+interServiceClients:
+  message_pusher:
+    name: "192.168.199.194"
+    port: "50058"
