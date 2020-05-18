@@ -20,7 +20,7 @@ import rpcs from './rpcs';
 import publish from './publish';
 import authentication from './authentication';
 import pusher from './pusher';
-import message from './message';
+import message from './chat';
 import duplexs from './duplexs';
 import inter_service_clients from './inter_service_clients';
 
