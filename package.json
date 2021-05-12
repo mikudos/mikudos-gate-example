@@ -32,7 +32,7 @@
     "compile": "shx rm -rf lib/ && tsc"
   },
   "dependencies": {
-    "grpc": "^1.24.2",
+    "grpc": "^1.24.9",
     "grpc-caller": "^0.13.0",
     "highland": "^2.13.5",
     "json-rpc-error": "^2.0.0",
