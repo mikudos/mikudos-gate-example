@@ -52,7 +52,7 @@
     "@types/request-promise-native": "^1.0.17",
     "@types/socket.io": "^2.1.4",
     "mikudos-socketio-client": "0.0.5",
-    "mocha": "^6.2.0",
+    "mocha": "^10.2.0",
     "shx": "^0.3.2",
     "socket-stress-test": "^0.1.0",
     "ts-mocha": "^6.0.0",
